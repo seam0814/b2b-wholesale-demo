@@ -11,9 +11,9 @@ export function SiteFooter() {
       <div className="max-w-[1400px] mx-auto px-5 py-12">
         <div className="grid md:grid-cols-3 gap-8 pb-10 border-b border-[var(--border)]">
           <div>
-            <div className="font-serif text-[22px]">{t.brand}</div>
-            <div className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted-fg)] mt-1">{t.tagline}</div>
-            <p className="text-[13px] text-[var(--muted-fg)] mt-4 max-w-xs leading-relaxed">
+            <div className="text-[14px] font-semibold tracking-[0.18em]">{t.brand}</div>
+            <div className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted-fg)] mt-2">{t.tagline}</div>
+            <p className="text-[12px] text-[var(--muted-fg)] mt-4 max-w-xs leading-relaxed">
               {locale === "ko"
                 ? "검증된 글로벌 바이어를 위한 큐레이티드 K-뷰티 도매 플랫폼."
                 : "A curated K-beauty wholesale platform for verified global buyers."}

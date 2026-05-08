@@ -19,7 +19,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Lumière Beauty — Global K-Beauty B2B Wholesale",
+  title: "HANEUL — Curated K-Beauty Wholesale",
   description:
     "Closed B2B wholesale platform for verified buyers. Tiered pricing, sample requests, bulk orders.",
 };

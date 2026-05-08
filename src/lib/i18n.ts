@@ -2,8 +2,8 @@ export type Locale = "ko" | "en";
 
 export const dict = {
   ko: {
-    brand: "Lumière Beauty",
-    tagline: "K-뷰티 글로벌 도매 플랫폼",
+    brand: "HANEUL",
+    tagline: "Curated K-Beauty Wholesale",
     nav: {
       products: "상품 카탈로그",
       sample: "샘플 요청",
@@ -15,14 +15,14 @@ export const dict = {
       logout: "로그아웃",
     },
     hero: {
-      eyebrow: "GLOBAL B2B WHOLESALE",
-      title: "전 세계 바이어를 위한\n프리미엄 K-뷰티 도매",
-      desc: "사업자 인증 회원에게만 공개되는 차등 단가, 샘플 요청, 벌크 오더까지. 한 곳에서.",
-      ctaPrimary: "도매 회원 가입 신청",
-      ctaSecondary: "카탈로그 둘러보기",
+      eyebrow: "B2B WHOLESALE",
+      title: "검증된 바이어를 위한\nK-뷰티 도매.",
+      desc: "사업자 인증 회원에게만 공개되는 등급별 단가. 샘플 요청과 벌크 오더를 한 곳에서.",
+      ctaPrimary: "가입 신청",
+      ctaSecondary: "카탈로그",
     },
     features: {
-      title: "왜 Lumière인가?",
+      title: "왜 HANEUL인가",
       items: [
         { t: "폐쇄형 회원제", d: "사업자 등록증 검증 후 승인된 바이어만 가격 열람 가능" },
         { t: "등급별 차등 단가", d: "Bronze · Silver · Gold 3단계, 거래량에 따라 자동 승급" },
@@ -121,12 +121,12 @@ export const dict = {
       success: "처리되었습니다",
     },
     footer: {
-      copyright: "© 2026 Lumière Beauty Co., Ltd. — 데모 사이트",
+      copyright: "© 2026 HANEUL — 데모 사이트",
     },
   },
   en: {
-    brand: "Lumière Beauty",
-    tagline: "Global K-Beauty B2B Wholesale",
+    brand: "HANEUL",
+    tagline: "Curated K-Beauty Wholesale",
     nav: {
       products: "Catalog",
       sample: "Sample Request",
@@ -138,14 +138,14 @@ export const dict = {
       logout: "Sign Out",
     },
     hero: {
-      eyebrow: "GLOBAL B2B WHOLESALE",
-      title: "Premium K-Beauty Wholesale\nfor Verified Buyers",
-      desc: "Tiered pricing, sample requests, and bulk orders — all in one platform, exclusively for approved business buyers.",
-      ctaPrimary: "Apply for Wholesale",
-      ctaSecondary: "Browse Catalog",
+      eyebrow: "B2B WHOLESALE",
+      title: "K-Beauty wholesale,\nfor verified buyers.",
+      desc: "Tiered pricing, sample requests, and bulk orders — for approved business buyers only.",
+      ctaPrimary: "Apply",
+      ctaSecondary: "Catalog",
     },
     features: {
-      title: "Why Lumière?",
+      title: "Why HANEUL",
       items: [
         { t: "Verified Buyers Only", d: "Business license verified, prices visible only to approved members" },
         { t: "Tiered Wholesale Pricing", d: "Bronze · Silver · Gold — auto-promoted based on volume" },
@@ -244,7 +244,7 @@ export const dict = {
       success: "Done",
     },
     footer: {
-      copyright: "© 2026 Lumière Beauty Co., Ltd. — Demo site",
+      copyright: "© 2026 HANEUL — Demo site",
     },
   },
 } as const;

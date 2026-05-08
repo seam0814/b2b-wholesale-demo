@@ -24,23 +24,23 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
   const desc = locale === "ko" ? product.descKo : product.descEn;
 
   return (
-    <div className="max-w-[1400px] mx-auto px-5 py-10">
-      <Link href="/products" className="text-[12px] tracking-wide text-[var(--muted-fg)] hover:text-[var(--brand)] inline-flex items-center gap-1.5 mb-10 uppercase">
-        <ArrowLeft className="w-3.5 h-3.5" /> {t.common.back}
+    <div className="max-w-[1280px] mx-auto px-6 py-10">
+      <Link href="/products" className="text-[11px] tracking-[0.18em] text-[var(--muted-fg)] hover:text-[var(--brand)] inline-flex items-center gap-1.5 mb-8 uppercase">
+        <ArrowLeft className="w-3 h-3" /> {t.common.back}
       </Link>
 
-      <div className="grid lg:grid-cols-2 gap-14">
+      <div className="grid lg:grid-cols-2 gap-12">
         <div className="aspect-[4/5] overflow-hidden bg-[var(--muted)]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={product.image} alt={product.imageAlt} className="w-full h-full object-cover" />
         </div>
 
-        <div className="lg:py-8">
+        <div className="lg:py-4">
           <span className="eyebrow">{product.category}</span>
-          <h1 className="font-serif text-[44px] md:text-[56px] leading-[1.02] mt-3 text-[var(--foreground)]">
+          <h1 className="font-serif text-[28px] md:text-[36px] leading-tight tracking-tight mt-3 text-[var(--foreground)]">
             {name}
           </h1>
-          <p className="text-[15px] text-[var(--muted-fg)] mt-5 leading-relaxed max-w-md">{desc}</p>
+          <p className="text-[14px] text-[var(--muted-fg)] mt-4 leading-relaxed max-w-md">{desc}</p>
 
           <div className="mt-8 grid grid-cols-2 gap-px bg-[var(--border)] max-w-md">
             <div className="bg-[var(--background)] p-4">
@@ -72,7 +72,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ slug: 
             {showPrice ? (
               <>
                 <div className="flex items-baseline gap-4">
-                  <span className="font-serif text-[56px] leading-none text-[var(--brand)]">
+                  <span className="font-serif text-[36px] md:text-[44px] leading-none text-[var(--brand)] tracking-tight">
                     {formatUSD(price)}
                   </span>
                   <div>

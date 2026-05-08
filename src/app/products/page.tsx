@@ -19,17 +19,17 @@ export default function ProductsPage() {
   const filtered = activeCategory === "All" ? products : products.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="max-w-[1400px] mx-auto px-5 py-14">
-      <div className="mb-12">
+    <div className="max-w-[1280px] mx-auto px-6 py-12">
+      <div className="mb-10">
         <span className="eyebrow">{locale === "ko" ? "도매 카탈로그" : "Wholesale Catalog"}</span>
-        <div className="md:flex md:items-end md:justify-between mt-3 gap-8">
-          <h1 className="font-serif text-[44px] md:text-[64px] leading-[1.02] max-w-2xl">
+        <div className="md:flex md:items-baseline md:justify-between mt-3 gap-8">
+          <h1 className="font-serif text-[32px] md:text-[44px] leading-tight tracking-tight max-w-2xl">
             {t.catalog.title}
           </h1>
-          <p className="text-[14px] text-[var(--muted-fg)] max-w-sm mt-3 md:mt-0 leading-relaxed">
+          <p className="text-[13px] text-[var(--muted-fg)] max-w-sm mt-2 md:mt-0 leading-relaxed">
             {locale === "ko"
-              ? `총 ${products.length}개 상품 · 회원 등급에 따라 단가가 자동으로 노출됩니다.`
-              : `${products.length} products · pricing reveals based on your tier.`}
+              ? `총 ${products.length}개 · 회원 등급에 따라 단가 노출.`
+              : `${products.length} products · pricing reveals by tier.`}
           </p>
         </div>
       </div>

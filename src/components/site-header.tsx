@@ -11,41 +11,31 @@ export function SiteHeader() {
   const isAdmin = role === "admin";
 
   return (
-    <header className="sticky top-0 z-30 bg-[var(--background)]/80 backdrop-blur-md border-b border-[var(--border)]">
-      <div className="max-w-[1400px] mx-auto px-5 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-full bg-[var(--brand)] grid place-items-center text-white font-serif text-[15px] italic">
-            L
-          </div>
-          <div className="leading-tight">
-            <div className="font-serif text-[19px] text-[var(--foreground)] tracking-tight">
-              {t.brand}
-            </div>
-            <div className="text-[10px] uppercase tracking-[0.18em] text-[var(--muted-fg)] mt-0.5">
-              EST. 2026
-            </div>
-          </div>
+    <header className="sticky top-0 z-30 bg-[var(--background)]/85 backdrop-blur-md border-b border-[var(--border)]">
+      <div className="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+        <Link href="/" className="text-[15px] font-semibold tracking-[0.18em] text-[var(--foreground)]">
+          {t.brand}
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1 text-[13px]">
-          <Link href="/products" className="px-3.5 py-2 text-[var(--foreground)]/80 hover:text-[var(--brand)] transition-colors">
+        <nav className="hidden md:flex items-center gap-7 text-[13px]">
+          <Link href="/products" className="text-[var(--foreground)]/75 hover:text-[var(--foreground)] transition-colors">
             {t.nav.products}
           </Link>
           {isMember && (
             <>
-              <Link href="/sample-request" className="px-3.5 py-2 text-[var(--foreground)]/80 hover:text-[var(--brand)] transition-colors">
+              <Link href="/sample-request" className="text-[var(--foreground)]/75 hover:text-[var(--foreground)] transition-colors">
                 {t.nav.sample}
               </Link>
-              <Link href="/bulk-order" className="px-3.5 py-2 text-[var(--foreground)]/80 hover:text-[var(--brand)] transition-colors">
+              <Link href="/bulk-order" className="text-[var(--foreground)]/75 hover:text-[var(--foreground)] transition-colors">
                 {t.nav.bulk}
               </Link>
-              <Link href="/orders" className="px-3.5 py-2 text-[var(--foreground)]/80 hover:text-[var(--brand)] transition-colors">
+              <Link href="/orders" className="text-[var(--foreground)]/75 hover:text-[var(--foreground)] transition-colors">
                 {t.nav.orders}
               </Link>
             </>
           )}
           {isAdmin && (
-            <Link href="/admin" className="px-3.5 py-2 text-[var(--foreground)]/80 hover:text-[var(--brand)] transition-colors">
+            <Link href="/admin" className="text-[var(--foreground)]/75 hover:text-[var(--foreground)] transition-colors">
               {t.nav.admin}
             </Link>
           )}
@@ -54,29 +44,29 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           {role === "guest" && (
             <>
-              <Link href="/login" className="text-[13px] text-[var(--foreground)]/70 hover:text-[var(--brand)] px-2">
+              <Link href="/login" className="text-[13px] text-[var(--foreground)]/70 hover:text-[var(--foreground)] hidden sm:inline">
                 {t.nav.login}
               </Link>
               <Link
                 href="/signup"
-                className="text-[13px] bg-[var(--brand)] text-white hover:bg-[var(--brand-dark)] px-5 py-2.5 rounded-full font-medium transition-colors"
+                className="text-[12px] bg-[var(--foreground)] text-white hover:bg-[var(--brand)] px-4 py-2 rounded-full font-medium transition-colors"
               >
                 {t.nav.signup}
               </Link>
             </>
           )}
           {role === "pending" && (
-            <span className="text-[11px] text-amber-800 bg-amber-100 px-3 py-1.5 rounded-full font-medium border border-amber-200">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-amber-800 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200">
               {locale === "ko" ? "승인 대기" : "Pending"}
             </span>
           )}
           {isMember && (
-            <span className="text-[11px] text-[var(--brand)] bg-[var(--brand-light)] px-3 py-1.5 rounded-full font-semibold uppercase tracking-wider border border-[var(--brand)]/15">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-[var(--brand)] bg-[var(--brand-light)] px-3 py-1.5 rounded-full border border-[var(--brand)]/15 font-semibold">
               {role}
             </span>
           )}
           {isAdmin && (
-            <span className="text-[11px] text-stone-100 bg-[#1a1410] px-3 py-1.5 rounded-full font-medium tracking-wider">
+            <span className="text-[10px] uppercase tracking-[0.18em] text-stone-100 bg-[#1a1410] px-3 py-1.5 rounded-full font-medium">
               {locale === "ko" ? "관리자" : "Admin"}
             </span>
           )}
