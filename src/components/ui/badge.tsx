@@ -4,13 +4,13 @@ import type { HTMLAttributes } from "react";
 type Variant = "bronze" | "silver" | "gold" | "neutral" | "success" | "warning" | "info";
 
 const variantClasses: Record<Variant, string> = {
-  bronze: "bg-amber-100 text-amber-900 border-amber-200",
-  silver: "bg-slate-200 text-slate-800 border-slate-300",
-  gold: "bg-yellow-100 text-yellow-900 border-yellow-300",
-  neutral: "bg-stone-100 text-stone-700 border-stone-200",
-  success: "bg-green-100 text-green-800 border-green-200",
-  warning: "bg-orange-100 text-orange-800 border-orange-200",
-  info: "bg-blue-100 text-blue-800 border-blue-200",
+  bronze: "bg-amber-50 text-amber-900 border-amber-200/80",
+  silver: "bg-stone-100 text-stone-800 border-stone-200",
+  gold: "bg-yellow-50 text-yellow-900 border-yellow-200",
+  neutral: "bg-[var(--surface)] text-[var(--muted-fg)] border-[var(--border)]",
+  success: "bg-emerald-50 text-emerald-900 border-emerald-200/80",
+  warning: "bg-amber-50 text-amber-900 border-amber-200/80",
+  info: "bg-[var(--brand-light)] text-[var(--brand)] border-[var(--brand)]/20",
 };
 
 type BadgeProps = HTMLAttributes<HTMLSpanElement> & { variant?: Variant };
@@ -19,7 +19,7 @@ export function Badge({ variant = "neutral", className, ...props }: BadgeProps) 
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium",
+        "inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-medium tracking-wide",
         variantClasses[variant],
         className,
       )}

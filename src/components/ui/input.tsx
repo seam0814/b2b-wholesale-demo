@@ -1,16 +1,12 @@
 import { cn } from "@/lib/utils";
 import type { InputHTMLAttributes, TextareaHTMLAttributes, SelectHTMLAttributes } from "react";
 
+const baseField = "flex w-full bg-transparent border-b border-[var(--border-strong)] px-0 py-2.5 text-[14px] text-[var(--foreground)] focus:outline-none focus:border-[var(--brand)] transition-colors placeholder:text-[var(--muted-fg)]/50";
+
 export function Input({ className, ...props }: InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
-      className={cn(
-        "flex h-10 w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm",
-        "placeholder:text-stone-400",
-        "focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent",
-        "disabled:opacity-50",
-        className,
-      )}
+      className={cn(baseField, "h-10", className)}
       {...props}
     />
   );
@@ -19,12 +15,7 @@ export function Input({ className, ...props }: InputHTMLAttributes<HTMLInputElem
 export function Textarea({ className, ...props }: TextareaHTMLAttributes<HTMLTextAreaElement>) {
   return (
     <textarea
-      className={cn(
-        "flex min-h-[88px] w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm",
-        "placeholder:text-stone-400",
-        "focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent",
-        className,
-      )}
+      className={cn(baseField, "min-h-[80px] resize-none", className)}
       {...props}
     />
   );
@@ -33,11 +24,7 @@ export function Textarea({ className, ...props }: TextareaHTMLAttributes<HTMLTex
 export function Select({ className, children, ...props }: SelectHTMLAttributes<HTMLSelectElement>) {
   return (
     <select
-      className={cn(
-        "flex h-10 w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm",
-        "focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent",
-        className,
-      )}
+      className={cn(baseField, "h-10 cursor-pointer", className)}
       {...props}
     >
       {children}
@@ -49,7 +36,7 @@ export function Label({ className, children, htmlFor }: { className?: string; ch
   return (
     <label
       htmlFor={htmlFor}
-      className={cn("text-sm font-medium text-stone-700 mb-1.5 block", className)}
+      className={cn("text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--muted-fg)] mb-2 block", className)}
     >
       {children}
     </label>

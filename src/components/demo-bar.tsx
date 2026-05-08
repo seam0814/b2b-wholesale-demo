@@ -12,10 +12,10 @@ export function DemoBar() {
   const t = dict[locale];
 
   return (
-    <div className="bg-stone-900 text-stone-100 text-sm">
-      <div className="max-w-7xl mx-auto px-4 py-2.5 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
+    <div className="bg-[#1a1410] text-stone-200 text-xs">
+      <div className="max-w-[1400px] mx-auto px-5 py-2 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
         <div className="flex items-center gap-3 flex-wrap">
-          <span className="text-xs uppercase tracking-wider text-pink-300 font-semibold">
+          <span className="eyebrow !text-[10px] !text-rose-300/90">
             {t.demoBar.label}
           </span>
           <div className="flex flex-wrap gap-1">
@@ -24,10 +24,10 @@ export function DemoBar() {
                 key={r}
                 onClick={() => setRole(r)}
                 className={cn(
-                  "px-2.5 py-1 rounded text-xs font-medium transition-colors",
+                  "px-2.5 py-1 rounded-md text-[11px] font-medium transition-all",
                   role === r
-                    ? "bg-pink-500 text-white"
-                    : "bg-stone-800 text-stone-300 hover:bg-stone-700",
+                    ? "bg-white text-[#1a1410]"
+                    : "bg-white/5 text-stone-300 hover:bg-white/10",
                 )}
               >
                 {t.demoBar.roles[r]}
@@ -35,24 +35,25 @@ export function DemoBar() {
             ))}
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <button
             onClick={() => setLocale("ko")}
             className={cn(
-              "px-2 py-1 rounded text-xs font-medium",
-              locale === "ko" ? "bg-pink-500 text-white" : "bg-stone-800 text-stone-300 hover:bg-stone-700",
+              "px-2 py-1 rounded text-[11px] font-medium transition-all",
+              locale === "ko" ? "bg-white text-[#1a1410]" : "text-stone-400 hover:text-white",
             )}
           >
             한국어
           </button>
+          <span className="text-stone-600">·</span>
           <button
             onClick={() => setLocale("en")}
             className={cn(
-              "px-2 py-1 rounded text-xs font-medium",
-              locale === "en" ? "bg-pink-500 text-white" : "bg-stone-800 text-stone-300 hover:bg-stone-700",
+              "px-2 py-1 rounded text-[11px] font-medium transition-all",
+              locale === "en" ? "bg-white text-[#1a1410]" : "text-stone-400 hover:text-white",
             )}
           >
-            English
+            EN
           </button>
         </div>
       </div>

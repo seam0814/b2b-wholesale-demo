@@ -1,60 +1,76 @@
 "use client";
 
+import { useState } from "react";
 import { useAuth } from "@/components/auth-provider";
 import { dict } from "@/lib/i18n";
 import { products } from "@/lib/mock-data";
 import { ProductCard } from "@/components/product-card";
 import { Lock } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function ProductsPage() {
   const { role, locale } = useAuth();
   const t = dict[locale];
   const isGuest = role === "guest";
   const isPending = role === "pending";
+  const [activeCategory, setActiveCategory] = useState<string>("All");
+
+  const categories = ["All", ...Array.from(new Set(products.map((p) => p.category)))];
+  const filtered = activeCategory === "All" ? products : products.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="mb-8 flex items-end justify-between gap-4 flex-wrap">
-        <div>
-          <h1 className="text-3xl font-bold text-stone-900">{t.catalog.title}</h1>
-          <p className="text-stone-600 mt-1">
+    <div className="max-w-[1400px] mx-auto px-5 py-14">
+      <div className="mb-12">
+        <span className="eyebrow">{locale === "ko" ? "도매 카탈로그" : "Wholesale Catalog"}</span>
+        <div className="md:flex md:items-end md:justify-between mt-3 gap-8">
+          <h1 className="font-serif text-[44px] md:text-[64px] leading-[1.02] max-w-2xl">
+            {t.catalog.title}
+          </h1>
+          <p className="text-[14px] text-[var(--muted-fg)] max-w-sm mt-3 md:mt-0 leading-relaxed">
             {locale === "ko"
               ? `총 ${products.length}개 상품 · 회원 등급에 따라 단가가 자동으로 노출됩니다.`
               : `${products.length} products · pricing reveals based on your tier.`}
           </p>
         </div>
-        {role === "bronze" && <TierLegend tier="bronze" />}
-        {role === "silver" && <TierLegend tier="silver" />}
-        {role === "gold" && <TierLegend tier="gold" />}
       </div>
 
       {(isGuest || isPending) && (
-        <div className="mb-6 rounded-lg border border-pink-200 bg-pink-50 p-4 flex items-start gap-3">
-          <Lock className="w-5 h-5 text-pink-700 mt-0.5 shrink-0" />
-          <div className="text-sm text-pink-900">
+        <div className="mb-10 border border-[var(--brand)]/15 bg-[var(--brand-light)] px-5 py-4 flex items-start gap-3">
+          <Lock className="w-4 h-4 text-[var(--brand)] mt-0.5 shrink-0" />
+          <div className="text-[13px] text-[var(--brand-dark)]">
             {isGuest ? t.catalog.hiddenPriceGuest : t.catalog.hiddenPricePending}
           </div>
         </div>
       )}
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {products.map((p) => (
+      {/* Category filter */}
+      <div className="flex flex-wrap gap-1 mb-10 border-b border-[var(--border)] pb-1">
+        {categories.map((c) => (
+          <button
+            key={c}
+            onClick={() => setActiveCategory(c)}
+            className={cn(
+              "px-3 py-2.5 text-[13px] tracking-wide transition-colors border-b-2 -mb-px",
+              activeCategory === c
+                ? "border-[var(--brand)] text-[var(--brand)] font-medium"
+                : "border-transparent text-[var(--muted-fg)] hover:text-[var(--foreground)]",
+            )}
+          >
+            {c}
+          </button>
+        ))}
+        {(role === "bronze" || role === "silver" || role === "gold") && (
+          <span className="ml-auto text-[10px] uppercase tracking-[0.18em] self-center px-3 py-2 text-[var(--brand)]">
+            {role} {locale === "ko" ? "단가 적용" : "pricing active"}
+          </span>
+        )}
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-12">
+        {filtered.map((p) => (
           <ProductCard key={p.id} p={p} />
         ))}
       </div>
-    </div>
-  );
-}
-
-function TierLegend({ tier }: { tier: "bronze" | "silver" | "gold" }) {
-  const colors: Record<string, string> = {
-    bronze: "bg-amber-100 text-amber-900 border-amber-200",
-    silver: "bg-slate-200 text-slate-800 border-slate-300",
-    gold: "bg-yellow-100 text-yellow-900 border-yellow-300",
-  };
-  return (
-    <div className={`px-4 py-2 rounded-full border text-sm font-medium ${colors[tier]} uppercase`}>
-      {tier} pricing active
     </div>
   );
 }
