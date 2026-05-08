@@ -1,22 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/components/auth-provider";
 import { DemoBar } from "@/components/demo-bar";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-});
 
 export const metadata: Metadata = {
   title: "HANEUL — Curated K-Beauty Wholesale",
@@ -30,7 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${geistSans.variable} ${instrumentSerif.variable} h-full antialiased`}>
+    <html lang="ko" className="h-full antialiased">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <AuthProvider>
           <DemoBar />

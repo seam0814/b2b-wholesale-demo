@@ -16,6 +16,7 @@
   --card: #ffffff;
   --surface: #f6f1ea;
   --ring: #881337;
+  --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Helvetica Neue", "Segoe UI", Roboto, sans-serif;
 }
 
 @theme inline {
@@ -34,22 +35,35 @@
   --color-card: var(--card);
   --color-surface: var(--surface);
   --color-ring: var(--ring);
-  --font-sans: var(--font-geist-sans);
-  --font-serif: var(--font-instrument-serif);
+  --font-sans: var(--font-sans);
+}
+
+html, body {
+  font-family: var(--font-sans);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "ss06", "cv11";
+  font-variant-numeric: tabular-nums;
 }
 
+/* "Display" style — repurposed from font-serif. Modern sans, tight tracking, medium weight. */
 .font-serif {
-  font-family: var(--font-instrument-serif), "Cormorant Garamond", Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.028em;
+  font-feature-settings: "tnum", "ss06";
+}
+
+/* Tabular numerals for prices and stats — fixes wobble in $ amounts. */
+.tabular,
+.font-serif {
+  font-variant-numeric: tabular-nums;
 }
 
 .eyebrow {
@@ -69,10 +83,5 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in { animation: fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
 
 ::selection { background: var(--brand); color: white; }
